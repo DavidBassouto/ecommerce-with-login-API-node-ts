@@ -13,8 +13,7 @@
     "db:create": "ts-node-dev --transpile-only src/controllers/database/create_database.ts",
     "db:recreate": "ts-node-dev --transpile-only src/controllers/database/recreate_database.ts",
     "build": "tsc",
-    "start": "node dist/server.js",
-    "type": "module"
+    "start": "node dist/server.js"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
