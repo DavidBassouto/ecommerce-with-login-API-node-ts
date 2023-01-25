@@ -8,7 +8,6 @@ import { IProductUpdate } from "../../interfaces/products/products.interface";
 export const updateProductService = async (
   { productName, description, price }: IProductUpdate,
   prodID: string,
-  userID: string
 ) => {
   const verifyIdFormat = validate(prodID);
   if (!verifyIdFormat) {

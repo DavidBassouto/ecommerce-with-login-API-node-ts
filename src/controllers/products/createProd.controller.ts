@@ -1,3 +1,4 @@
+import { instanceToPlain } from "class-transformer";
 import { Request, Response } from "express";
 import { IProductCreate } from "../../interfaces/products/products.interface";
 import { createProdService } from "../../services/products/createProd.service";
@@ -7,7 +8,7 @@ export const createProductController = async (req: Request, res: Response) => {
 
   const userID = req.user.id;
 
-  const newCar = await createProdService(userID,{
+  const newProd = await createProdService(userID, {
     productName,
     price,
     description,
@@ -15,7 +16,7 @@ export const createProductController = async (req: Request, res: Response) => {
 
   return res
     .status(201)
-    .json({ message: "Car created with success", car: newCar });
+    .json({ message: "Product created with success", product: instanceToPlain(newProd) });
 };
 
 export default createProductController;

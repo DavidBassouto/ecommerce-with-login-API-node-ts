@@ -8,7 +8,7 @@ import { IProductCreate } from "../../interfaces/products/products.interface";
 export const createProdService = async (
   userID: string,
   { productName, price, description }: IProductCreate
-): Promise<Product> => {
+) => {
   const productRepository = AppDataSource.getRepository(Product);
   const userRepository = AppDataSource.getRepository(User);
 
@@ -34,5 +34,12 @@ export const createProdService = async (
   });
 
   await productRepository.save(product);
-  return product;
+
+  const productToReturn = {
+    ...product,
+    created_at: product.created_at.toLocaleString(),
+    updated_at: product.updated_at.toLocaleString(),
+  };
+
+  return productToReturn;
 };

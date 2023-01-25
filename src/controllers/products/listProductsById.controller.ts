@@ -1,3 +1,4 @@
+import { instanceToPlain } from "class-transformer";
 import { Request, Response } from "express";
 import { listProdByIdService } from "../../services/products/listProdById.service";
 
@@ -9,5 +10,5 @@ export const listProductByIdController = async (
 
   const productFind = await listProdByIdService(prodID);
 
-  return res.json(productFind);
+  return res.json(instanceToPlain(productFind));
 };

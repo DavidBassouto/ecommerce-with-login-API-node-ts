@@ -16,14 +16,8 @@ class Product {
   @Column({ length: 20 })
   productName: string;
 
-  @Column({ length: 20 })
-  brand: string;
-
   @Column({ type: "float" })
   price: number;
-
-  @Column()
-  year: number;
 
   @Column({ type: "text", width: 250 })
   description?: string;
@@ -35,10 +29,10 @@ class Product {
   user: User;
 
   @CreateDateColumn()
-  createdAt: Date;
+  created_at: Date;
 
   @UpdateDateColumn()
-  updatedAt: Date;
+  updated_at: Date;
 }
 
 export default Product;

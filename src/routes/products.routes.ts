@@ -5,18 +5,23 @@ import { listAllProductsController } from "../controllers/products/listAllProduc
 import { listProductByIdController } from "../controllers/products/listProductsById.controller";
 import { listProductsFromUserByIdController } from "../controllers/products/listProductsFromUserById";
 import { updateProductController } from "../controllers/products/updateProduct.controller";
+import { ensureAuthMiddleware } from "../middlewares/ensureAuth.middleware";
 import { validateData } from "../middlewares/validateData.middleware";
 import { productCreateSchema } from "../schema/productCreate.schema";
 
 export const routes = Router();
 
 export const productRoutes = () => {
-  routes.post("", validateData(productCreateSchema), createProductController);
+  routes.post(
+    "",
+    validateData(productCreateSchema),
+    ensureAuthMiddleware,
+    createProductController
+  );
   routes.get("", listAllProductsController);
-  routes.get("/:carId", listProductByIdController);
-  routes.get("/owner/:ownerId", listProductsFromUserByIdController);
-  routes.delete("/:carId", deleteProductByIdController);
-  routes.patch("/:carId", updateProductController);
+  routes.get("/:prodID", listProductByIdController);
+  routes.delete("/:prodID", ensureAuthMiddleware, deleteProductByIdController);
+  routes.patch("/:prodID", ensureAuthMiddleware, updateProductController);
 
   return routes;
 };

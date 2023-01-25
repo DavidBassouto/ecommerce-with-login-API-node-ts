@@ -10,10 +10,10 @@ export const listProductsFromUserByIdService = async (
   const productRepo = AppDataSource.getRepository(Product);
   const userRepo = AppDataSource.getRepository(User);
 
-  const verifyIdFormat = validate(userID);
-  if (!verifyIdFormat) {
-    throw new AppError("Incorret ID format provided", 400);
-  }
+  // const verifyIdFormat = validate(userID);
+  // if (!verifyIdFormat) {
+  //   throw new AppError("Incorret ID format provided", 400);
+  // }
 
   const findUser = await userRepo.findOneBy({
     id: userID,
@@ -24,7 +24,9 @@ export const listProductsFromUserByIdService = async (
 
   const findProductsFromUser = await productRepo.find({
     where: {
-      user: findUser,
+      user: {
+        id: findUser.id,
+      },
     },
   });
 

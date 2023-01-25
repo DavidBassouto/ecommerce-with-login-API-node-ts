@@ -28,7 +28,6 @@ export const ensureAuthMiddleware = async (
         });
       }
       req.user = {
-        isAdm: decoded.isAdm,
         id: decoded.id,
       };
       next();

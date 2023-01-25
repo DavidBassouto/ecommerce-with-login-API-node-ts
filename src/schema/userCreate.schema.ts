@@ -3,7 +3,7 @@ import { SchemaOf } from "yup";
 import { IUserCreate } from "../interfaces/users/user.interface";
 
 export const userCreateSchema: SchemaOf<IUserCreate> = yup.object().shape({
-  name: yup.string().required("<productName> is a required field"),
+  name: yup.string().required("<name> is a required field"),
   email: yup
     .string()
     .email("Invalid Email")
@@ -15,10 +15,10 @@ export const userCreateSchema: SchemaOf<IUserCreate> = yup.object().shape({
     .max(50, "<password> field should have up to 50 characters"),
   cellphone: yup
     .string()
-    .required("<price> is a required field")
+    .required("<cellphone> is a required field")
     .min(0, "Must be positive"),
   address: yup
     .string()
-    .required()
-    .max(150, "<description> must have up to 150 characters"),
+    .required("<address> is a required field")
+    .max(150, "<address> must have up to 150 characters"),
 });

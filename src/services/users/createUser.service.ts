@@ -4,7 +4,10 @@ import AppDataSource from "../../data-source";
 
 import { AppError } from "../../errors/AppError";
 import { User } from "../../entities/users.entity";
-import { IUserCreate } from "../../interfaces/users/user.interface";
+import {
+  IUserCreate,
+  IUserCreateResponse,
+} from "../../interfaces/users/user.interface";
 
 export const createUserService = async ({
   name,
@@ -12,7 +15,7 @@ export const createUserService = async ({
   password,
   cellphone,
   address,
-}: IUserCreate): Promise<User> => {
+}: IUserCreate) => {
   const userRepository = AppDataSource.getRepository(User);
 
   const emailAlreadyExists = await userRepository.findOneBy({ email });
@@ -31,5 +34,15 @@ export const createUserService = async ({
 
   await userRepository.save(newUser);
 
-  return newUser;
+  const userToReturn = {
+    id: newUser.id,
+    name: newUser.name,
+    email: newUser.email,
+    cellphone: newUser.cellphone,
+    address: newUser.address,
+    created_at: newUser.created_at.toLocaleString(),
+    updated_at: newUser.created_at.toLocaleString(),
+  };
+
+  return userToReturn;
 };
