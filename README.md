@@ -1,81 +1,223 @@
 # Desafio - Desenvolvedor Backend - David Bassouto
+
 ## Utilização da API
-
-
 
 ## Instruções
 
 - Clonar este repositório (back-end)
-- Instalar as bibliotecas (yarn add / npm install)
-- Configurar arquivo .env , tendo como modelo o arquivo _.env.exemple_
-- Rodar as Migrations (yarn typeorm migration:run -d src/data-source)
-- Conectar servidor ao database com o comando _yarn dev_
 
+- Instalar as bibliotecas (yarn add / npm install)
+
+- Configurar arquivo .env , tendo como modelo o arquivo _.env.exemple_
+
+- Rodar as Migrations (yarn typeorm migration:run -d src/data-source)
+
+- Conectar servidor ao database com o comando _yarn dev_
 
 ## Guia Back-End
 
-_Rota de Criação de veículo_
+## _Rota de Usuário_ -> /users
 
-- POST: /cars
-  > {
-  > "name":"Palio",
-  > "brand":"Chevrolet",
-  > "price":17500,
-  > "year":2003,
-  > "description":"Carro econômico, confortavel e de manutanção em conta",
-  > "owner":{
-  > "name":"david",
-  > "email": "davidbassoutodev@gmail.com",
-  > "cellphone": "31991970713"
-  > }
-  > }
+_Rota para criar novo usuário_
 
+- POST
 
-  Retorno Esperado:
+  _{
+  "name": "David Bassouto",
+  "email": "davidbassoutodev@gmail.com",
+  "password": "123aaa",
+  "cellphone": "31991970000",
+  "address": "Rua de Belo Horizonte"
+  }_
 
-  > "message": "Car created with success",
-  > "car": {
-  > "name": "Palio",
-  > "brand": "Chevrolet",
-  > "price": 17500,
-  > "year":2003,
-  > "description": "Carro econômico, confortavel e de manutanção em conta",
-  > "owner": {
-  > "id": "6d7c264e-fd76-464a-b2c6-f216d1dd9966",
-  > "name": "david",
-  > "email": "davidbassoutodev@gmail.com",
-  > "cellphone": "31991970713"
-  > },
-  > "id": "9d0c1424-c531-4f7b-935e-1e3bf04eba4b",
-  > "created_at": "2023-01-20T15:15:11.130Z",
-  > "updated_at": "2023-01-20T15:15:11.130Z"
-  > }
-  > }
+- Retorno esperado:
 
-_Rota de Listagem de todos os veículo_
+  _{
+  "message": "User created with success",
+  "user": {
+  "id": "c1338406-0b7c-4636-acdd-423c97a1c433",
+  "name": "David Bassouto",
+  "email": "davidbassoutodev@gmail.com",
+  "cellphone": "31991970713",
+  "address": "Rua de Belo Horizonte",
+  "created_at": "25/01/2023 10:51:02",
+  "updated_at": "25/01/2023 10:51:02"
+  }_
 
-- GET: /cars
+_Rota de Listagem de todos os produtos de um determinado Usuário_
 
-_Rota de Listagem de veículo por ID_
+- GET: /users/products **( NECESSÁRIO AUTENTICAÇÃO )**
+- Retorno esperado:
 
-- GET: /cars/:carID
+  _[
+  {
+  "id": "6df92eda-6854-4aa9-aa93-7432a15c406b",
+  "productName": "Alexa EchoDot",
+  "price": 125.5,
+  "description": "Produto essencial para tornar a sua casa mais tecnológica e divertida!",
+  "created_at": "2023-01-25T01:33:22.140Z",
+  "updated_at": "2023-01-25T01:33:22.140Z",
+  "user": {
+  "id": "f5c6ecf6-5aaf-4918-adbe-083954f421c1",
+  "name": "David Bassouto",
+  "email": "davidbassoutodev@gmail.com",
+  "cellphone": "31991970713",
+  "address": "Rua de Belo Horizonte",
+  "created_at": "2023-01-25T01:08:53.031Z",
+  "updated_at": "2023-01-25T01:08:53.031Z"
+  }
+  }
+  ]_
 
-_Rota de Listagem de todos os veículos de um mesmo Proprietário_
+## _Rota de Login_ -> /login
 
-- GET: /cars/owner/ownerID
+- POST
 
-_Rota de deletar um veículo por ID_
+_{
+"email": "davidbassoutodev@gmail.com",
+"password": "123aaa"
+}_
 
-- DELETE: /cars/:carID
+- Retorno esperado:
 
-_Rota de editar um veículo por ID_
+  _{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY1YzZlY2Y2LTVhYWYtNDkxOC1hZGJlLTA4Mzk1NGY0MjFjMSIsImlhdCI6MTY3NDY1NDcwMSwiZXhwIjoxNjc0NjYxOTAxLCJzdWIiOiJmNWM2ZWNmNi01YWFmLTQ5MTgtYWRiZS0wODM5NTRmNDIxYzEifQ.ty6m5AjFUEl0eL0_4sSVYR4WVEPLyaOhUmHjuwGV2iY"
+  }_
 
-- PATCH: /cars/:carID
+## _Rota de Produto_ -> /products
+
+## _Rota para criar novo produto_
+
+- POST **( NECESSÁRIO AUTENTICAÇÃO )**
+
+  _{
+  "productName": "Alexa EchoDot",
+  "price": 125.5,
+  "description": "Produto essencial para tornar a sua casa mais tecnológica e divertida!"
+  }_
+
+- Retorno esperado:
+
+  _{
+  "message": "Product created with success",
+  "product": {
+  "productName": "JBL Color",
+  "price": 125.5,
+  "description": "Produto essencial para tornar a sua casa mais tecnológica e divertida!",
+  "user": {
+  "id": "f5c6ecf6-5aaf-4918-adbe-083954f421c1",
+  "name": "David Bassouto",
+  "email": "davidbassoutodev@gmail.com",
+  "cellphone": "31991970000",
+  "address": "Rua de Belo Horizonte",
+  "created_at": "2023-01-25T01:08:53.031Z",
+  "updated_at": "2023-01-25T01:08:53.031Z"
+  },
+  "id": "9432206f-6abb-40d7-8222-1a42b43e7b5f",
+  "created_at": "24/01/2023 23:11:26",
+  "updated_at": "24/01/2023 23:11:26"
+  }
+  }_
+
+## _Rota de Listagem de todos os produtos_
+
+- GET
+
+- Retorno esperado:
+
+  _[
+  {
+  "id": "6df92eda-6854-4aa9-aa93-7432a15c406b",
+  "productName": "Alexa EchoDot",
+  "price": 125.5,
+  "description": "Produto essencial para tornar a sua casa mais tecnológica e divertida!",
+  "created_at": "2023-01-25T01:33:22.140Z",
+  "updated_at": "2023-01-25T01:33:22.140Z",
+  "user": {
+  "id": "f5c6ecf6-5aaf-4918-adbe-083954f421c1",
+  "name": "David Bassouto",
+  "email": "davidbassoutodev@gmail.com",
+  "cellphone": "31991970000",
+  "address": "Rua de Belo Horizonte",
+  "created_at": "2023-01-25T01:08:53.031Z",
+  "updated_at": "2023-01-25T01:08:53.031Z"
+  }
+  }
+  ]_
+
+## _Rota de Listagem de produto por ID_
+
+- GET: /:prodID
+
+- Retorno esperado:
+
+  _{
+  "id": "9432206f-6abb-40d7-8222-1a42b43e7b5f",
+  "productName": "JBL Color",
+  "price": 125.5,
+  "description": "Produto essencial para tornar a sua casa mais tecnológica e divertida!",
+  "created_at": "2023-01-25T02:11:26.787Z",
+  "updated_at": "2023-01-25T02:11:26.787Z",
+  "user": {
+  "id": "f5c6ecf6-5aaf-4918-adbe-083954f421c1",
+  "name": "David Bassouto",
+  "email": "davidbassoutodev@gmail.com",
+  "cellphone": "31991970000",
+  "address": "Rua de Belo Horizonte",
+  "created_at": "2023-01-25T01:08:53.031Z",
+  "updated_at": "2023-01-25T01:08:53.031Z"
+  }
+  }_
+
+## _Rota de editar um produto por ID_
+
+- PATCH: /:prodID **( NECESSÁRIO AUTENTICAÇÃO )**
+
+  _{
+  "productName": "JBL EDIT",
+  "price": 284.57,
+  "description": "Produto essencial para tornar a sua casa mais tecnológica e divertida!"
+  }_
+
+- Retorno esperado:
+
+  _{
+  "message": "Product Updated",
+  "product": {
+  "id": "9432206f-6abb-40d7-8222-1a42b43e7b5f",
+  "productName": "JBL EDIT",
+  "price": 284.57,
+  "description": "Produto essencial para tornar a sua casa mais tecnológica e divertida!",
+  "created_at": "2023-01-25T02:11:26.787Z",
+  "updated_at": "2023-01-25T02:26:42.947Z",
+  "user": {
+  "id": "f5c6ecf6-5aaf-4918-adbe-083954f421c1",
+  "name": "David Bassouto",
+  "email": "davidbassoutodev@gmail.com",
+  "cellphone": "31991970000",
+  "address": "Rua de Belo Horizonte",
+  "created_at": "2023-01-25T01:08:53.031Z",
+  "updated_at": "2023-01-25T01:08:53.031Z"
+  }
+  }
+  }_
+
+_Rota de deletar um produto por ID_
+
+- DELETE: /:prodID **( NECESSÁRIO AUTENTICAÇÃO )**
+
+- Retorno esperado:
+
+  _{
+  "message": "Product deleted with success"
+  }_
 
 **Observações:**
 
-> - Carros com dados persistidos em memoria, utilizando TypeORM e Postegres;
-> - Tanto o carro quanto o proprietário tem um identificador único
-> - Proprietário e veículos possuem relacionamento de um para vários, ou seja, um mesmo usuário pode ter varias veículos
->   mas um veículo pertence a apenas um usuário.
+> - Produtos com dados persistidos em memoria, utilizando TypeORM e Postgres;
 
+> - Tanto o produto quanto o usuário tem um identificador único
+
+> - Usuário e produtos possuem relacionamento de um para vários, ou seja, um mesmo usuário pode ter varias produtos mas um produto pertence a apenas um usuário.
+
+# Teste Tecnico - Desenvolvedor Backend - David Bassouto
