@@ -2,6 +2,8 @@
 
 ## Utilização da API
 
+> link DEPLOY - [ECOMMERCE_WITH_LOGIN](https://ecommerce-with-login-api-node-ts.onrender.com)
+
 ## Instruções
 
 - Clonar este repositório (back-end)
