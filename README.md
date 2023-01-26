@@ -1,4 +1,4 @@
-# Desafio - Desenvolvedor Backend - David Bassouto
+# Desafio - Desenvolvedor Backend
 
 ## Utilização da API
 
@@ -25,11 +25,11 @@ _Rota para criar novo usuário_
 - POST
 
   _{
-  "name": "David Bassouto",
-  "email": "davidbassoutodev@gmail.com",
+  "name": "David",
+  "email": "dbdev@gmail.com",
   "password": "123aaa",
   "cellphone": "31991970000",
-  "address": "Rua de Belo Horizonte"
+  "address": "Rua das flores"
   }_
 
 - Retorno esperado:
@@ -38,10 +38,10 @@ _Rota para criar novo usuário_
   "message": "User created with success",
   "user": {
   "id": "c1338406-0b7c-4636-acdd-423c97a1c433",
-  "name": "David Bassouto",
-  "email": "davidbassoutodev@gmail.com",
-  "cellphone": "31991970713",
-  "address": "Rua de Belo Horizonte",
+  "name": "David",
+  "email": "dbdev@gmail.com",
+  "cellphone": "31991970000",
+  "address": "Rua das flores",
   "created_at": "25/01/2023 10:51:02",
   "updated_at": "25/01/2023 10:51:02"
   }_
@@ -61,10 +61,10 @@ _Rota de Listagem de todos os produtos de um determinado Usuário_
   "updated_at": "2023-01-25T01:33:22.140Z",
   "user": {
   "id": "f5c6ecf6-5aaf-4918-adbe-083954f421c1",
-  "name": "David Bassouto",
-  "email": "davidbassoutodev@gmail.com",
-  "cellphone": "31991970713",
-  "address": "Rua de Belo Horizonte",
+  "name": "David",
+  "email": "dbdev@gmail.com",
+  "cellphone": "31991970000",
+  "address": "Rua das flores",
   "created_at": "2023-01-25T01:08:53.031Z",
   "updated_at": "2023-01-25T01:08:53.031Z"
   }
@@ -76,7 +76,7 @@ _Rota de Listagem de todos os produtos de um determinado Usuário_
 - POST
 
 _{
-"email": "davidbassoutodev@gmail.com",
+"email": "dbdev@gmail.com",
 "password": "123aaa"
 }_
 
@@ -108,10 +108,10 @@ _{
   "description": "Produto essencial para tornar a sua casa mais tecnológica e divertida!",
   "user": {
   "id": "f5c6ecf6-5aaf-4918-adbe-083954f421c1",
-  "name": "David Bassouto",
-  "email": "davidbassoutodev@gmail.com",
+  "name": "David",
+  "email": "dbdev@gmail.com",
   "cellphone": "31991970000",
-  "address": "Rua de Belo Horizonte",
+  "address": "Rua das flores",
   "created_at": "2023-01-25T01:08:53.031Z",
   "updated_at": "2023-01-25T01:08:53.031Z"
   },
@@ -137,10 +137,10 @@ _{
   "updated_at": "2023-01-25T01:33:22.140Z",
   "user": {
   "id": "f5c6ecf6-5aaf-4918-adbe-083954f421c1",
-  "name": "David Bassouto",
-  "email": "davidbassoutodev@gmail.com",
+  "name": "David",
+  "email": "dbdev@gmail.com",
   "cellphone": "31991970000",
-  "address": "Rua de Belo Horizonte",
+  "address": "Rua das flores",
   "created_at": "2023-01-25T01:08:53.031Z",
   "updated_at": "2023-01-25T01:08:53.031Z"
   }
@@ -162,10 +162,10 @@ _{
   "updated_at": "2023-01-25T02:11:26.787Z",
   "user": {
   "id": "f5c6ecf6-5aaf-4918-adbe-083954f421c1",
-  "name": "David Bassouto",
-  "email": "davidbassoutodev@gmail.com",
+  "name": "David",
+  "email": "dbdev@gmail.com",
   "cellphone": "31991970000",
-  "address": "Rua de Belo Horizonte",
+  "address": "Rua das flores",
   "created_at": "2023-01-25T01:08:53.031Z",
   "updated_at": "2023-01-25T01:08:53.031Z"
   }
@@ -194,10 +194,10 @@ _{
   "updated_at": "2023-01-25T02:26:42.947Z",
   "user": {
   "id": "f5c6ecf6-5aaf-4918-adbe-083954f421c1",
-  "name": "David Bassouto",
-  "email": "davidbassoutodev@gmail.com",
+  "name": "David",
+  "email": "dbdev@gmail.com",
   "cellphone": "31991970000",
-  "address": "Rua de Belo Horizonte",
+  "address": "Rua das flores",
   "created_at": "2023-01-25T01:08:53.031Z",
   "updated_at": "2023-01-25T01:08:53.031Z"
   }
@@ -222,4 +222,4 @@ _Rota de deletar um produto por ID_
 
 > - Usuário e produtos possuem relacionamento de um para vários, ou seja, um mesmo usuário pode ter varias produtos mas um produto pertence a apenas um usuário.
 
-# Teste Tecnico - Desenvolvedor Backend - David Bassouto
+# Teste Tecnico - Desenvolvedor Backend
